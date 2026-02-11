@@ -1,10 +1,10 @@
-//errorHandler.js — глобальна обробка помилок: повертає статус 500,
-//або інші статуси у разі використання бібліотеки http-errors та наступний об’єкт:
-import createError from 'http-errors';
+// errorHandler.js — глобальна обробка помилок
+
+import { HttpError } from 'http-errors';
 
 export const errorHandler = (err, req, res, next) => {
-  // Перевірка помилки від http-errors
-  if (createError.isHttpError(err)) {
+  // Перевірка, чи є помилка HTTP-помилкою (створеною через http-errors)
+  if (err instanceof HttpError) {
     return res.status(err.status).json({
       message: err.message,
     });
