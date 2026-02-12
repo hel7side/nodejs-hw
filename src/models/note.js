@@ -25,7 +25,7 @@ const noteSchema=mongoose.Schema(
     userId:{
       type:Schema.Types.ObjectId,
       ref:"User",
-      reguired:true,
+      required: true,
     },
   },
   {
